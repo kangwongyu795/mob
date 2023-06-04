@@ -9,10 +9,31 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@expo/webpack-config": "^18.0.1",
+    "@fullcalendar/core": "^6.1.8",
+    "@fullcalendar/daygrid": "^6.1.8",
+    "@fullcalendar/interaction": "^6.1.8",
+    "@fullcalendar/react": "^6.1.8",
+    "@mui/material": "^5.13.3",
+    "@react-navigation/bottom-tabs": "^6.5.7",
+    "@react-navigation/drawer": "^6.6.2",
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/stack": "^6.3.16",
     "expo": "~48.0.18",
     "expo-status-bar": "~1.4.4",
+    "firebase": "^9.22.1",
+    "openai": "^3.2.1",
     "react": "18.2.0",
-    "react-native": "0.71.8"
+    "react-dom": "18.2.0",
+    "react-native": "0.71.8",
+    "react-native-calendars": "^1.1298.0",
+    "react-native-web": "~0.18.10",
+    "react-native-web-webview": "^1.0.2",
+    "react-native-webview": "^12.1.0",
+    "react-native-youtube": "^2.0.2",
+    "react-native-youtube-iframe": "^2.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
