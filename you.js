@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, ScrollView } from 'react-native';
 import { getFirestore, collection, query, getDocs, addDoc } from 'firebase/firestore';
 import dbfire from './db'; // 파이어 베이스 구성
 
@@ -12,7 +12,10 @@ const YoutubeScreen = () => {
       const videosCollection = collection(dbfire, 'YouTube');
       const querySnapshot = await getDocs(videosCollection);
       const videosData = querySnapshot.docs.map((doc) => doc.data());
-      setVideos(videosData);
+      const transformedVideos = videosData.map((videoData) => ({
+        id: videoData.videoId,
+      }));
+      setVideos(transformedVideos);
     } catch (error) {
       console.error(error);
     }
@@ -55,7 +58,7 @@ const YoutubeScreen = () => {
   }, []);
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <View style={{ flexDirection: 'row' }}>
         <TextInput
           style={{ flex: 1, borderWidth: 1, padding: 10 }}
@@ -66,21 +69,19 @@ const YoutubeScreen = () => {
         <Button title="검색" onPress={handleSearch} />
       </View>
 
-      <View>
+      <ScrollView>
         {videos.map((video, index) => (
-          <View key={index}>
-            
+          <View key={index} style={{ marginVertical: 10 }}>
             <iframe
               width="100%"
               height="300"
               src={`https://www.youtube.com/embed/${video.id}`}
-              frameBorder="0"
               allow="autoplay; encrypted-media"
               allowFullScreen
             ></iframe>
           </View>
         ))}
-      </View>
+      </ScrollView>
 
       <Button title="유튜브 저장" onPress={saveVideoIdToFirebase} />
     </View>
@@ -89,3 +90,5 @@ const YoutubeScreen = () => {
 
 export default YoutubeScreen;
 
+
+//  `https://www.googleapis.com/youtube/v3/videos?key=AIzaSyDSRj2FRN_a8ruN59FSpnthbo-KuE_IiUg&id=${videoId}`
